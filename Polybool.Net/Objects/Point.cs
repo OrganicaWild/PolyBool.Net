@@ -13,11 +13,13 @@ namespace Polybool.Net.Objects
         public decimal X { get; set; }
         public decimal Y { get; set; }
 
+        //vector2 to point implicit conversion
         public static implicit operator Point(Vector2 value)
         {
             return new Point((decimal) value.x, (decimal) value.y);
         }
 
+        //point to vector2 implicit conversion
         public static implicit operator Vector2(Point value)
         {
             return new Vector2((float) value.X, (float) value.Y);
