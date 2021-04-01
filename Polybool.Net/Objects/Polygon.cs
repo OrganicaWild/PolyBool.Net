@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Polybool.Net.Objects
 {
@@ -13,6 +14,12 @@ namespace Polybool.Net.Objects
         {
             Regions = regions;
             Inverted = isInverted;
+        }
+
+        public bool IsEmpty()
+        {
+            int sum = Regions.Sum(region => region.Points.Count);
+            return sum == 0;
         }
 
         public bool Equals(Polygon other)
