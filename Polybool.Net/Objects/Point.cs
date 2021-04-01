@@ -13,6 +13,11 @@ namespace Polybool.Net.Objects
         public decimal X { get; set; }
         public decimal Y { get; set; }
 
+        public bool Equals(Point other)
+        {
+            return other.X == X && other.Y == Y;
+        }
+
         //vector2 to point implicit conversion
         public static implicit operator Point(Vector2 value)
         {
