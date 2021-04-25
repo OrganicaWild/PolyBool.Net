@@ -9,6 +9,29 @@ namespace Polybool.Net.Objects
     {
         public List<Point> Points { get; set; }
 
+        public bool IsClockWise()
+        {
+            decimal sum = 0;
+            Point first = null;
+            Point prev = null;
+            foreach (Point point in Points)
+            {
+                if (first == null)
+                {
+                    first = point;
+                    prev = point;
+                }
+                else
+                {
+                    sum += (point.X - prev.X) * (point.Y + prev.Y);
+                    prev = point;
+                }
+            }
+            sum += (prev.X - first.X) * (prev.Y + first.Y);
+
+            return sum > 0;
+        }
+
         public bool Equals(Region other)
         {
             if (other.Points.Count != Points.Count)
